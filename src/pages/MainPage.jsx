@@ -4,7 +4,7 @@ import VinylCarousel from "../components/VinylCarousel";
 import { dummyTracks } from "../data/dummyTracks";
 import "./MainPage.css";
 
-const API_BASE_URL = import.meta.env.PROD ? "/api" : "http://3.39.194.83:8080";
+const API_BASE_URL = import.meta.env.PROD ? "/api" : "http://13.124.71.221:8080/auth/kakao/login";
 
 export default function MainPage() {
   const [, setSelectedTrack] = useState(dummyTracks[0]);
