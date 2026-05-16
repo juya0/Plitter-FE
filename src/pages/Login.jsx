@@ -9,22 +9,19 @@ export default function Login() { // component 선언
     // 카카오 로그인 이후
     const handleKakaoLogin = async () => {
         try {
-            const response = await fetch ("http://13.124.174.30:8080/api/auth/kakao/login");
-            // 백엔드(8080포트)에 카카오 로그인 페이지 URL fetch(요청)
+            const response = await fetch("/api/auth/kakao/login");
 
             if (!response.ok) {
                 throw new Error("카카오 로그인 URL 요청 실패");
             }
 
-            const data = await response.json(); 
-            // 서버가 준 데이터 JSON 형태로 변환
+            const data = await response.json();
 
             if (data.code !== "SUCCESS" || !data.content) {
                 throw new Error(data.message || "카카오 로그인 URL이 없습니다.");
             }
 
             window.location.href = data.content;
-            // 백엔드에서 받은 data.content(주소)로 유저 이동
         } catch (error) {
             console.error("카카오 로그인 실패:", error);
         }
