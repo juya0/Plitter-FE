@@ -16,8 +16,10 @@ export default function SongSearch() {
     // 검색 결과 개수 제한 (기본값 10)
     const [limit, setLimit] = useState(10);
 
+    // 입력창 값 변할 때 실행 for 입력마다 상태 업데이트
     const handleInputChange = (event) => {
         setKeyword(event.target.value);
+        // 입력창 값을 keyword에 저장
     };
 
     return (
