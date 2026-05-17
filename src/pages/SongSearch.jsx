@@ -22,6 +22,54 @@ export default function SongSearch() {
         // 입력창 값을 keyword에 저장
     };
 
+    // API 호출
+    const searchTracks = async () => {
+
+        // 검색어 없으면 알림 띄우고 함수 종료
+        if (!keyword.trim()) {
+            alert('검색어를 입력해주세요.');
+            return;
+        }
+
+        // API 호출 시작 : 로딩 상태 true로 변경
+        setIsLoading(true);
+
+        // 기존 에러 메세지 삭제(새 검색 시 이전 에러 남지 않게)
+        setError(null);
+
+        try{
+            // API URL 생성 (쿼리 파라미터 포함)
+            const query = new URLSearchParams({
+                keyword: keyword, // 검색어
+                limit: limit // 개수 제한
+            });
+
+            // *** 백엔드 서버에 GET 요청 및 응답 대기 ***
+            const response = await fetch(`/api/tracks/search?${query}`);
+
+            // 백엔드 응답을 JSON 형식으로 변환
+            const data = await response.json();
+
+            // HTTP 응답 상태 코드 확인 (성공: 200~299 / 실패: 400,401,500)
+            if (!response.ok){
+                setError(data.message || '검색 중 오류가 발생했습니다.');
+                // API에서 받은 에러 메세지 사용 or 에러 메세지 띄우기
+                setSearchResults([]); // 결과 초기화(에러 전 결과 제거)
+                return;
+            }
+
+            // 성공 시 API 응답의 content 배열을 상태에 저장
+            setSearchResults(data.content); // track 객체들 저장(spotifyId, title, artistName등)
+        } catch (err){
+            // 네트워크 오류나 다른 문제 발생 시 처리
+            setError('네트워크 오류가 발생했습니다.');
+            setSearchResults([]);
+        } finally{
+            // 로딩 완료: 성공/실패 상관없이 로딩 상태를 false로 변경
+            setIsLoading(false); // API 호출 완료 표시
+        }
+    };
+
     return (
         <div>
             <h1> Song Search</h1>
