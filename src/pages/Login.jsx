@@ -15,13 +15,15 @@ export default function Login() { // component 선언
                 throw new Error("카카오 로그인 URL 요청 실패");
             }
 
-            const data = await response.json();
+            const data = await response.json(); 
+            // 서버가 준 데이터 JSON 형태로 변환
 
             if (data.code !== "SUCCESS" || !data.content) {
                 throw new Error(data.message || "카카오 로그인 URL이 없습니다.");
             }
 
             window.location.href = data.content;
+            // 백엔드에서 받은 data.content(주소)로 유저 이동
         } catch (error) {
             console.error("카카오 로그인 실패:", error);
         }
