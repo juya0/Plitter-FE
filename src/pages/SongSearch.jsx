@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./SongSearch.css";
 
 export default function SongSearch() {
     // 사용자의 검색 키워드 저장
@@ -78,8 +79,8 @@ export default function SongSearch() {
     };
 
     return (
-        <div style={{ padding: '20px' }}>
-            <h1>FIND YOU NUMBER 18</h1>
+        <main className="song-search-page">
+            <h1>FIND YOUR NUMBER 18</h1>
 
             {/* 검색 입력 UI */}
             <div style={{ marginBottom: '20px', display: 'flex', gap: '10px' }}>
@@ -169,6 +170,6 @@ export default function SongSearch() {
                     </ul>
                 </div>
             )}
-        </div>
+        </main>
     );
 }
