@@ -1,0 +1,76 @@
+.login-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fbf6ee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.login-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.login-title-box {
+  width: 345px;
+  max-width: 510px;
+  height: 35px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f0eadf 0%, #e8dfcf 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-title-box h1 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #74472d;
+  margin: 0;
+}
+
+.login-description {
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #111;
+}
+
+.login-button-section {
+  width: 100%;
+  max-width: 510px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 189px;
+}
+
+.login-sub-text {
+  font-size: 14px;
+  color: #9aa0aa;
+  margin-bottom: 15px;
+}
+
+.kakao-login-button {
+  width: 340px;
+  max-width: 500px;
+  height: 45px;
+  border-radius: 999px;
+  cursor: pointer;
+  object-fit: fill;
+}
+
+.guest-login-button {
+  margin-top: 15px;
+  background: none;
+  border: none;
+  color: #9aa0aa;
+  font-size: 12px;
+  cursor: pointer;
+}
