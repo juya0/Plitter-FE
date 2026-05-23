@@ -5,16 +5,16 @@ import searchIcon from "../assets/magnifyingglass.png";
 export default function SongSearch() {
     // 사용자의 검색 키워드 저장
     const [keyword, setKeyword] = useState('');
-    
+
     // API 응답으로 받은 검색 결과 저장 : 검색 후 결과 화면에 표시하기 위함
     const [searchResults, setSearchResults] = useState([]);
-    
+
     // 로딩 중 여부 : API 호출 시 로딩중 메세지 or 스피너 표시
     const [isLoading, setIsLoading] = useState(false);
-    
+
     // 에러 메세지(검색 실패 시 사용자에 알림)
     const [error, setError] = useState(null);
-    
+
     // 검색 결과 개수 제한 (기본값 10)
     const [limit, setLimit] = useState(10);
 
@@ -23,7 +23,6 @@ export default function SongSearch() {
         // event: 함수 실행 시 외부에서 들어오는 데이터(매개변수)
         setKeyword(event.target.value);
         // 입력창 값을 keyword에 저장
-
         {/* # 웹의 표준 API 속성명
             event : 브라우저에서 이벤트(키보드,마우스) 시 생기는 '상태 정보 데이터 객체'
             target : event 내부 속성 - '이벤트 발생 최초 진원지'(특정 HTML요소)
@@ -67,15 +66,14 @@ export default function SongSearch() {
 
                 setError(data.message || '검색 중 오류가 발생했습니다.');
                 // API에서 받은 에러 메세지 사용 or 에러 메세지 띄우기
-
                 setSearchResults([]);
                 // 결과 초기화(에러 전 결과 제거)
-
                 return;
             }
 
             // 성공 시 API 응답의 content 배열을 상태에 저장
-            setSearchResults(data.content); // track 객체들 저장(spotifyId, title, artistName등)
+            setSearchResults(data.content);
+            // track 객체들 저장(spotifyId, title, artistName등)
 
         } catch (err) {
             // 네트워크 오류나 다른 문제 발생 시 처리
@@ -114,6 +112,11 @@ export default function SongSearch() {
                     type="text"
                     value={keyword}
                     onChange={handleInputChange}
+                    onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                            searchTracks();
+                        }
+                    }}
                     placeholder="검색할 노래 또는 아티스트 입력"
                     disabled={isLoading}
                     className="search-input"
@@ -136,7 +139,11 @@ export default function SongSearch() {
             {/* 로딩 상태 표시
                 API 호출 진행 중을 사용자에게 알림
             */}
-            {isLoading && <p style={{ color: 'blue' }}>검색 중입니다...</p>}
+            {isLoading && (
+                <p className="loading-text">
+                    검색 중입니다...
+                </p>
+            )}
 
             {/* 에러 메시지 표시
                 error 상태가 null이 아닐 때(에러o)
@@ -154,9 +161,9 @@ export default function SongSearch() {
 
                 <div>
 
-                    <h2>
+                    {/*<h2>
                         검색 결과 ({searchResults.length}개)
-                    </h2>
+                    </h2>*/}
 
                     {/* 검색 결과 목록 표시 */}
                     <ul style={{
@@ -166,37 +173,35 @@ export default function SongSearch() {
 
                         {searchResults.map((track) => (
 
-                            <li
-                                key={track.spotifyId}
-                                style={{
-                                    padding: '10px',
-                                    marginBottom: '10px',
-                                    border: '1px solid #ddd'
-                                }}
-                            >
-                                {/* 각 검색 결과 아이템 (React 필수)
-                                    key={track.spotifyId}: React가 리스트 아이템 구분을 위한 고유 식별자
-                                    spotifyId는 API 응답에서 받은 각 곡의 고유 ID (중복 없음)
-                                */}
+                            <li key={track.spotifyId}>
 
-                                {/* 곡 제목 */}
-                                <h3>{track.title}</h3>
+                                {/* 앨범 커버 이미지 */}
+                                <img
+                                    src={track.albumCoverImageUrl}
+                                    alt={track.title}
+                                />
 
-                                {/* 아티스트명 */}
-                                <p>{track.artistName}</p>
+                                {/* 텍스트 영역 */}
+                                <div className="track-info">
 
-                                {/* 추가 정보 표시 (선택사항)
-                                    albumCoverImageUrl, previewUrl, spotifyUrl은 나중에 이미지나 재생 버튼으로 활용 가능
-                                */}
+                                    {/* 곡 제목 */}
+                                    <h3>{track.title}</h3>
 
-                                {track.previewUrl && (
-                                    <p style={{
-                                        fontSize: '12px',
-                                        color: '#666'
-                                    }}>
-                                        미리듣기 가능
-                                    </p>
-                                )}
+                                    {/* 아티스트명 */}
+                                    <p>{track.artistName}</p>
+
+                                    {/* 추가 정보 표시 */}
+                                    {track.previewUrl && (
+                                        <p style={{
+                                            fontSize: '12px',
+                                            color: '#666'
+                                        }}>
+                                            미리듣기 가능
+                                        </p>
+                                    )}
+
+                                </div>
+
                             </li>
                         ))}
                     </ul>
