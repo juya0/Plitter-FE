@@ -1,0 +1,192 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.profile-share-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20.5px 24px;
+  background-color: #fff9f0;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  color: #000;
+  text-align: left;
+}
+
+.profile-share-header {
+  width: 100%;
+  text-align: left;
+}
+
+.profile-share-header h1 {
+  margin: 0;
+  color: #111111;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.profile-share-title {
+  margin-top: 53px;
+  text-align: center;
+}
+
+.profile-share-title h2 {
+  margin: 0;
+  color: #000;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.profile-share-title p {
+  margin: 4px 0 0;
+  color: #9ca3af;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.share-profile-image-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 42px;
+}
+
+.share-profile-image-button {
+  position: relative;
+  width: 93px;
+  height: 93px;
+  border: none;
+  border-radius: 50%;
+  background-color: #eee4d5;
+  cursor: pointer;
+}
+
+.share-plus-button {
+  position: absolute;
+  right: -1px;
+  bottom: 1px;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background-color: #7a4b2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-plus-button img {
+  width: 17px;
+  height: 14px;
+  object-fit: contain;
+  display: block;
+}
+
+.share-form-section {
+  margin-top: 25px;
+  text-align: left;
+}
+
+.share-label {
+  display: block;
+  width: 100%;
+  margin: 0 0 6px 0;
+  color: #000;
+  font-size: 15px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.share-link-label {
+  margin-top: 21px;
+}
+
+.share-input,
+.share-link-box {
+  width: 100%;
+  height: 53px;
+  border: none;
+  border-radius: 12px;
+  background-color: #f0e7d8;
+  padding: 0 22px;
+  color: #7a4b2a;
+  font-size: 16px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.share-input {
+  outline: none;
+}
+
+.share-link-box {
+  display: flex;
+  align-items: center;
+}
+
+.share-guide {
+  margin: 8px 0 0 0;
+  color: #9ca3af;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.copy-button {
+  width: 100%;
+  height: 53px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 12px;
+  background-color: #f0e7d8;
+  color: #7a4b2a;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.copy-button.copied {
+  color: #fff;
+}
+
+.share-bottom-buttons {
+  position: fixed;
+  left: 24px;
+  right: 24px;
+  bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.share-bottom-buttons button {
+  width: 100%;
+  height: 49px;
+  border: none;
+  border-radius: 12px;
+  background-color: #c4ad80;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.share-profile-image-button:active,
+.copy-button:active,
+.share-bottom-buttons button:active {
+  transform: scale(0.99);
+}

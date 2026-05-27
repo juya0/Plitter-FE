@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import AuthCallback from "./pages/AuthCallback";
 import SongSearch from './pages/SongSearch';
 import ProfileCreatePage from "./pages/ProfileCreatePage";
+import ProfileShare from "./pages/ProfileShare";
 
 function AuthTokenHandler() { // 백엔드에서 발급한 accessToken 수신,관리 모듈
   const location = useLocation(); // 현재 주소창 정보 가져옴
@@ -58,6 +59,8 @@ function App() {
         <Route path="/search" element={<SongSearch />} /> 
 
         <Route path="/profile-create" element={<ProfileCreatePage />} />
+        <Route path="/profile-share" element={<ProfileShare />} />
+
 
       </Routes>
     </BrowserRouter>
