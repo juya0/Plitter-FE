@@ -37,13 +37,14 @@ body {
   font-size: 20px;
   font-weight: 800;
   line-height: 1.2;
+  color: #000000;
 }
 
 .profile-create-title p {
   margin: 9px 0 0;
   font-size: 12px;
   font-weight: 500;
-  color: #9ca3af;
+  color: #8D949E;
 }
 
 /* 프로필 이미지 */
@@ -89,7 +90,7 @@ body {
 }
 
 .nickname-input {
-  width: 100%;
+  width: 345px;
   height: 53px;
   border: none;
   outline: none;
@@ -108,7 +109,7 @@ body {
 }
 
 .nickname-guide {
-  margin: 16px 0 18px;
+  margin: 9px 0 18px;
   color: #9ca3af;
   font-size: 12px;
   font-weight: 600;
@@ -116,7 +117,9 @@ body {
 
 /* 하단 버튼 */
 .next-button {
-  position: fixed;
+  align-items: center;
+  margin-top: 190px;
+  width: 345px;
   left: 36px;
   right: 36px;
   bottom: 30px;
@@ -124,7 +127,7 @@ body {
   border: none;
   border-radius: 12px;
   background-color: #c4ad80;
-  color: #fff;
+  color: #FFF9F0;
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
