@@ -3,8 +3,9 @@
 }
 
 .main-page {
+  position: relative;
   width: 100%;
-  max-width: 430px;
+  max-width: 100%;
   min-height: 100dvh;
   margin: 0 auto;
   background-color: #fff9f0;
