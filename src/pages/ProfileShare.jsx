@@ -72,7 +72,7 @@ export default function ProfileShare() {
   };
 
   const handleGoRecommend = () => {
-    navigate("/search");
+    navigate("/");
   };
 
   return (
